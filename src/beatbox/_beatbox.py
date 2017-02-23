@@ -134,6 +134,11 @@ class Client:
 class BeatBoxXmlGenerator(XMLGenerator):
     def __init__(self, destination, encoding):
         XMLGenerator.__init__(self, destination, encoding)
+        # The following was added as a hack to address an upstream issue which
+        # has been present in beatbox-20.x, for the past three years.
+        # https://github.com/ebottabi/salesforce-beatbox/issues/14
+        # https://code.google.com/archive/p/salesforce-beatbox/issues/14
+        self._out = destination
     
     def makeName(self, name):   
         if name[0] is None:
